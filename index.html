@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scalex Innovations – Local Supply Chain, Export & Import Platform (Coming Soon)</title>
+
+  <meta
+    name="description"
+    content="Scalex Innovations – A platform that connects local businesses, suppliers, and distributors to a streamlined supply chain with built-in export and import capabilities."
+  />
+
+  <style>
+    /* ============ BASE STYLES ============ */
+
+    :root {
+      --bg: #020617;
+      --primary: #4f46e5;
+      --accent: #22c55e;
+      --text-main: #f9fafb;
+      --text-muted: #9ca3af;
+      --border-soft: rgba(148, 163, 184, 0.3);
+      --panel-border: rgba(148, 163, 184, 0.4);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: radial-gradient(circle at top, #111827 0, #020617 55%, #000 100%);
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+    }
+
+    /* ============ LAYOUT ============ */
+
+    header {
+      border-bottom: 1px solid var(--border-soft);
+      background: rgba(15, 23, 42, 0.92);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0.9rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 1.25rem 2.5rem;
+    }
+
+    .hero {
+      max-width: 1120px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.7fr);
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    @media (max-width: 880px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      main {
+        padding-top: 2.25rem;
+      }
+
+      header {
+        position: static;
+      }
+    }
+
+    /* ============ HEADER BRAND ============ */
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .brand-logo {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .brand-logo img {
+      height: 40px;
+      width: auto;
+      display: block;
+    }
+
+    .brand-text-main {
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+    }
+
+    .brand-text-sub {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+    }
+
+    .nav-pill {
+      border-radius: 999px;
+      border: 1px solid var(--border-soft);
+      padding: 0.35rem 0.9rem;
+      font-size: 0.72rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+      background: rgba(15, 23, 42, 0.85);
+    }
+
+    .nav-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 10px rgba(34, 197, 94, 0.9);
+    }
+
+    /* ============ HERO LEFT COLUMN ============ */
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.22rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: rgba(15, 23, 42, 0.75);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--text-muted);
+      margin-bottom: 1.15rem;
+    }
+
+    .badge-pulse {
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: var(--primary);
+      box-shadow:
+        0 0 0 0 rgba(79, 70, 229, 0.7),
+        0 0 14px rgba(79, 70, 229, 0.9);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        box-shadow:
+          0 0 0 0 rgba(79, 70, 229, 0.7),
+          0 0 14px rgba(79, 70, 229, 0.9);
+        transform: scale(1);
+      }
+      65% {
+        box-shadow:
+          0 0 0 12px rgba(79, 70, 229, 0),
+          0 0 24px rgba(79, 70, 229, 0.4);
+        transform: scale(1.05);
+      }
+      100% {
+        box-shadow:
+          0 0 0 0 rgba(79, 70, 229, 0),
+          0 0 14px rgba(79, 70, 229, 0.85);
+        transform: scale(1);
+      }
+    }
+
+    h1 {
+      font-size: clamp(2.3rem, 4vw, 3.1rem);
+      line-height: 1.08;
+      margin-bottom: 0.9rem;
+    }
+
+    h1 span.highlight {
+      background: linear-gradient(90deg, #22d3ee, #4f46e5, #22c55e);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      display: inline-block;
+    }
+
+    .hero-subtitle {
+      font-size: 0.98rem;
+      max-width: 32rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-message {
+      font-size: 0.9rem;
+      max-width: 32rem;
+      padding: 0.9rem 1rem;
+      border-radius: 0.9rem;
+      border: 1px dashed rgba(148, 163, 184, 0.55);
+      background: radial-gradient(
+        circle at top left,
+        rgba(79, 70, 229, 0.16),
+        transparent 55%
+      );
+      margin-bottom: 1.8rem;
+    }
+
+    .hero-message strong {
+      color: var(--text-main);
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.9rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .cta-primary {
+      border-radius: 999px;
+      padding: 0.8rem 1.7rem;
+      border: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      background: linear-gradient(135deg, #4f46e5, #0ea5e9);
+      color: var(--text-main);
+      box-shadow:
+        0 12px 26px rgba(15, 23, 42, 0.9),
+        0 0 24px rgba(59, 130, 246, 0.8);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      transition:
+        transform 0.18s ease,
+        box-shadow 0.18s ease,
+        filter 0.18s ease;
+    }
+
+    .cta-primary span.arrow {
+      font-size: 1.05rem;
+      transform: translateY(0.5px);
+    }
+
+    .cta-primary:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.05);
+      box-shadow:
+        0 18px 40px rgba(15, 23, 42, 0.95),
+        0 0 34px rgba(59, 130, 246, 1);
+    }
+
+    .cta-primary:focus-visible {
+      outline: 2px solid #38bdf8;
+      outline-offset: 3px;
+    }
+
+    .cta-secondary {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .cta-secondary span {
+      border-bottom: 1px dotted rgba(148, 163, 184, 0.7);
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .meta-pill {
+      padding: 0.4rem 0.8rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.42);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .meta span.dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 999px;
+      background: rgba(148, 163, 184, 0.7);
+      display: inline-block;
+      margin: 0 0.45rem;
+    }
+
+    /* ============ HERO RIGHT COLUMN (PANEL) ============ */
+
+    .panel {
+      border-radius: 1.4rem;
+      border: 1px solid var(--panel-border);
+      background:
+        radial-gradient(
+          circle at top left,
+          rgba(79, 70, 229, 0.18),
+          transparent 55%
+        ),
+        radial-gradient(
+          circle at bottom right,
+          rgba(56, 189, 248, 0.2),
+          transparent 55%
+        ),
+        rgba(15, 23, 42, 0.96);
+      padding: 1.5rem 1.4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .panel-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-bottom: 1.05rem;
+    }
+
+    .tag {
+      font-size: 0.72rem;
+      padding: 0.28rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: rgba(15, 23, 42, 0.9);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      white-space: nowrap;
+    }
+
+    .tag-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #22d3ee, #4f46e5);
+    }
+
+    .panel-title {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--text-muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .panel-main {
+      font-size: 0.96rem;
+      line-height: 1.7;
+      margin-bottom: 1.3rem;
+    }
+
+    .panel-main strong {
+      color: var(--text-main);
+    }
+
+    .panel-divider {
+      height: 1px;
+      border-radius: 999px;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(148, 163, 184, 0.6),
+        transparent
+      );
+      margin-bottom: 1rem;
+    }
+
+    .panel-footer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.9rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .panel-pill {
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      border: 1px dashed rgba(148, 163, 184, 0.7);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .panel-email {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+        "Liberation Mono", "Courier New", monospace;
+      font-size: 0.8rem;
+      padding: 0.45rem 0.7rem;
+      border-radius: 0.55rem;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      user-select: all;
+    }
+
+    /* ============ FOOTER ============ */
+
+    footer {
+      border-top: 1px solid var(--border-soft);
+      padding: 1rem 1.25rem 1.2rem;
+      background: rgba(2, 6, 23, 0.96);
+      backdrop-filter: blur(10px);
+    }
+
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 0.9rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      position: relative;
+    }
+
+    .footer-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 0;
+      height: 1px;
+      background: linear-gradient(90deg, #22d3ee, #4f46e5);
+      transition: width 0.18s ease;
+    }
+
+    .footer-links a:hover::after {
+      width: 100%;
+    }
+
+    .footer-dot {
+      margin: 0 0.35rem;
+      opacity: 0.5;
+    }
+  </style>
+</head>
+<body>
+  <!-- ======= HEADER ======= -->
+  <header>
+    <div class="nav" aria-label="Main navigation">
+      <a href="#" class="brand">
+        <span class="brand-logo">
+          <img src="scalex-logo.png" alt="Scalex Innovations logo" />
+        </span>
+        <span>
+          <span class="brand-text-main">Scalex Innovations</span><br />
+          <span class="brand-text-sub">Local Supply Chain · Export &amp; Import</span>
+        </span>
+      </a>
+      <div class="nav-pill" aria-label="Coming soon status">
+        <span class="nav-dot" aria-hidden="true"></span>
+        <span>Coming soon</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ======= MAIN CONTENT ======= -->
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <!-- Left content -->
+      <div>
+        <div class="badge">
+          <span class="badge-pulse" aria-hidden="true"></span>
+          <span>Connecting local supply to global demand.</span>
+        </div>
+
+        <h1 id="hero-title">
+          Scaling
+          <span class="highlight">local business supply chains</span>
+          with export &amp; import built in.
+        </h1>
+
+        <p class="hero-subtitle">
+          Scalex Innovations is building an end-to-end platform for local
+          businesses, distributors, and manufacturers to manage their supply
+          chain — from local sourcing and inventory to cross-border export and
+          import operations.
+        </p>
+
+        <p class="hero-message">
+          <strong>Innovative module:</strong><br />
+          A single workspace where purchase orders, stock, delivery routes,
+          and export/import documentation stay in sync — so your local
+          supply chain can confidently serve global customers.
+        </p>
+
+        <div class="cta-row">
+          <button class="cta-primary" type="button" aria-label="Request early access to Scalex local supply chain export and import platform">
+            Request early access
+            <span class="arrow">↗</span>
+          </button>
+
+          <p class="cta-secondary">
+            For collaborations &amp; pilots, write to
+            <span>hello@scalexinnovations.com</span>
+          </p>
+        </div>
+
+        <div class="meta" aria-label="Launch and audience information">
+          <div class="meta-pill">
+            Local to global<span class="dot"></span>Supply chain &amp; trade
+          </div>
+          <div class="meta-pill">
+            Built for<span class="dot"></span>MSMEs, distributors &amp; manufacturers
+          </div>
+        </div>
+      </div>
+
+      <!-- Right content (info panel) -->
+      <aside class="panel" aria-label="Preview of Scalex local supply chain and export/import platform">
+        <div class="panel-content">
+          <div class="tag-row">
+            <div class="tag">
+              <span class="tag-dot" aria-hidden="true"></span>
+              Local Supplier Network
+            </div>
+            <div class="tag">
+              <span class="tag-dot" aria-hidden="true"></span>
+              Smart Order &amp; Inventory Flow
+            </div>
+            <div class="tag">
+              <span class="tag-dot" aria-hidden="true"></span>
+              Export &amp; Import Module
+            </div>
+          </div>
+
+          <h2 class="panel-title">What we’re crafting</h2>
+
+          <p class="panel-main">
+            <strong>Scalex Innovations</strong> is a supply chain command center
+            for local businesses. Map your suppliers, manage orders, monitor
+            stock, and connect logistics — all from one place.<br /><br />
+            On top of this, our export &amp; import module helps you turn
+            local products into global offerings with trade-ready documentation,
+            shipment visibility, and curated partners for logistics and
+            compliance.
+          </p>
+
+          <div class="panel-divider" aria-hidden="true"></div>
+
+          <div class="panel-footer">
+            <div class="panel-pill">
+              Early access for local supply-driven businesses
+            </div>
+            <div class="panel-email" aria-label="Contact email">
+              ✉ hello@scalexinnovations.com
+            </div>
+          </div>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <!-- ======= FOOTER ======= -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        © <span id="year"></span> Scalex Innovations. All rights reserved.
+      </div>
+      <nav class="footer-links" aria-label="Footer links">
+        <a href="mailto:hello@scalexinnovations.com">Contact</a>
+        <span class="footer-dot" aria-hidden="true">•</span>
+        <a href="#" aria-label="Scalex Innovations on LinkedIn">LinkedIn</a>
+        <span class="footer-dot" aria-hidden="true">•</span>
+        <a href="#" aria-label="Scalex Innovations on X (formerly Twitter)">
+          X (Twitter)
+        </a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    // Set current year in footer
+    (function () {
+      var yearSpan = document.getElementById("year");
+      if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear();
+      }
+    })();
+  </script>
+</body>
+</html>
